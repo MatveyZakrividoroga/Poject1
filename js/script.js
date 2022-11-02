@@ -12,10 +12,29 @@ const personalMovieDB={
     privat: false
 
 };
-const lastWF1=prompt("Один из последних просмотренных фильмов?","");
-const rate1=prompt("На сколько оцените его?","");
-const lastWF2=prompt("Один из последних просмотренных фильмов?","");
-const rate2=prompt("На сколько оцените его?","");
-personalMovieDB.movies[lastWF1]=rate1;
-personalMovieDB.movies[lastWF2]=rate2;
-//console.log(personalMovieDB);
+
+for(let i=0;i<2;i++){
+    const lastWF=prompt("Один из последних просмотренных фильмов?",""),
+    rate=prompt("На сколько оцените его?","");
+    if(lastWF != null && rate != null && lastWF != '' && rate != '' && lastWF.length < 50){
+        personalMovieDB.movies[lastWF]= rate;
+        console.log('done');
+    } else{
+        console.log('error');
+        i--;
+    }
+}
+if(personalMovieDB.count<10){
+    alert('Просмотрено мало фильмов');
+} else{
+    if(personalMovieDB.count>10 && personalMovieDB.count<30){
+        alert('Вы классический зритель');
+    } else{
+        if(personalMovieDB.count>30){
+            alert('Вы киноман');
+        } else{
+            alert('Произошла ошибка');
+        }
+    }
+}
+console.log(personalMovieDB);
